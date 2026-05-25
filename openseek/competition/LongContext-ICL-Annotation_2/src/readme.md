@@ -52,4 +52,6 @@ python rule.py
 python 8-two_stage.py
 ```
 
+任务5的最后提交使用了，LongContext-ICL-Annotation_2\outputs\任务5\openseek-5-v1_14.jsonl  该文件结果。会和复现结果有区别。
+
 
