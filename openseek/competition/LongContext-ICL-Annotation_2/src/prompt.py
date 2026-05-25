@@ -115,7 +115,7 @@ def count_answer(text: str, task_id: int = 1):
         # 真正引起 JSONDecodeError 的通常是 \x08 (Backslash), \x0c (Formfeed) 等
         final_prediction = "".join(ch for ch in final_prediction if ord(ch) >= 32 or ch in "\n\r\t")
 
-    return final_prediction if final_prediction is not None else "Not sad"
+    return final_prediction if final_prediction is not None else "no"
 
 def call_nvidia(prompt_text: str, max_tokens: int = 600, stage_name: str = "Nvidia") -> str:
     URL="http://0.0.0.0:2026/v1/completions"

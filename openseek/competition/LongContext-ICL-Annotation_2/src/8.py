@@ -564,7 +564,7 @@ def main():
 				current_result["prediction"] = revised_answer
 				results_dict[sample_id] = current_result
 				
-				# 立即将更新写入文件，防止中断导致丢失
+				# 立即将更新写入文件，防止中断导致丢失，循环执行后间隔时间太长
 				with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
 					for s in test_samples:
 						sid = s["id"]

@@ -241,14 +241,7 @@ def main():
             if revised_answer != candidate_answer:
                 current_result["prediction"] = revised_answer
                 results_dict[sample_id] = current_result
-                
-                # 立即将更新写入文件，防止中断导致丢失
-                with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-                    for s in test_samples:
-                        sid = s["id"]
-                        if sid in results_dict:
-                            f.write(json.dumps(results_dict[sid], ensure_ascii=False) + "\n")
-                            
+
             final_results[sample_id] = {
                 "test_sample_id": sample_id,
                 "prediction": revised_answer if revised_answer else candidate_answer,

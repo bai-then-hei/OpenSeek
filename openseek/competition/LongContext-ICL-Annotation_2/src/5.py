@@ -14,6 +14,7 @@ OUTPUT_PATH = "../outputs/result/openseek-5-v1.jsonl"
 TASK_ID = 5
 SAD_SHOT_COUNT = 100
 NOT_SAD_SHOT_COUNT = 50
+MAX_RETRY_TIMES = 3
 
 
 def remove_emoji(text: str) -> str:
@@ -144,6 +145,13 @@ def main():
                     post_think_text = response_raw.split("</think>")[-1].strip()
                     break
                 retry_count += 1
+                if retry_count > MAX_RETRY_TIMES:
+                    print(
+                        f"[Retry] Task {TASK_ID}, sample {sample_id}: "
+                        f"retry limit {MAX_RETRY_TIMES} exceeded, using latest raw response"
+                    )
+                    post_think_text = response_raw.strip()
+                    break
                 print(f"[Retry] Task {TASK_ID}, sample {sample_id}: missing </think>, retrying ({retry_count})")
 
             # Prefer explicit final answer spans, and prioritize "not sad" before "sad".

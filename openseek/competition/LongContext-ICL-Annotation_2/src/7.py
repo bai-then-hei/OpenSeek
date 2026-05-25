@@ -445,7 +445,8 @@ def main():
                 )
 
             results_dict[sample_id]["prediction"] = revised_answer if revised_answer else candidate_answer
-            persist_results_jsonl(results_dict, test_samples)
+
+        persist_results_jsonl(results_dict, test_samples)
 
     print("\nReview pass finished; results are already persisted during updates.")
 
